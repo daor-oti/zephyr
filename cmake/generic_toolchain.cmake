@@ -4,10 +4,14 @@ if(NOT TOOLCHAIN_ROOT)
   if(DEFINED ENV{TOOLCHAIN_ROOT})
     # Support for out-of-tree toolchain
     set(TOOLCHAIN_ROOT $ENV{TOOLCHAIN_ROOT})
+    set(TOOLCHAIN_USE_CUSTOM 1)
   else()
     # Default toolchain cmake file
     set(TOOLCHAIN_ROOT ${ZEPHYR_BASE})
   endif()
+else()
+  # Support for out-of-tree toolchain
+  set(TOOLCHAIN_USE_CUSTOM 1)
 endif()
 zephyr_file(APPLICATION_ROOT TOOLCHAIN_ROOT)
 
